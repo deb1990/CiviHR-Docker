@@ -35,7 +35,7 @@ RUN chmod 777 -R ~/.amp/
 RUN echo 'Include /root/.amp/apache.d/*.conf' >> /etc/apache2/apache2.conf
 
 
-RUN ~/buildkit/bin/amp test
+# RUN ~/buildkit/bin/amp test
 
 # Add to Path
 #ENV PATH="~/buildkit/bin:$PATH"
@@ -45,5 +45,8 @@ RUN echo '{ "allow_root": true }' > /root/.bowerrc
 
 # Create a CiviHR Project
 RUN ~/buildkit/bin/civibuild create hr16 --civi-ver 4.7.15 --hr-ver staging --url http://192.168.99.100:8908
+
+
+RUN sudo service apache2 restart
 
 EXPOSE 8908
