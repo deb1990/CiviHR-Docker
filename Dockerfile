@@ -20,7 +20,7 @@ RUN ~/buildkit/bin/civi-download-tools
 
 RUN chmod 777 -R ~/buildkit/
 
-
+# Set amp config for non interactive shell
 RUN ~/buildkit/bin/amp config:set \
   --db_type="mysql_dsn" \
   --mysql_dsn="mysql://root:root@192.168.99.100:3306" \
@@ -32,6 +32,7 @@ RUN ~/buildkit/bin/amp config:set \
 
 RUN chmod 777 -R ~/.amp/
 
+# Add AMP config to apache
 RUN echo 'Include /root/.amp/apache.d/*.conf' >> /etc/apache2/apache2.conf
 
 
